@@ -1,22 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
+    <link rel="stylesheet" href="{% static 'Ecommerce/style.css' %}">
 </head>
 <body>
-   <h1>Product</h1> 
+    <h1 style="color: white;">Product</h1>
    <ul>
-    { % for product in product %}
+    {% for product in products%}
     <li>
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
-        <p> price: {{ product.price }}</p>
+        <p> price: Kshs. {{ product.price }}</p>
         <img src="{{product.image.url}}" alt="{{product.name}}">
+        <p>Available: {{product.available|yesno:"yes,No"}}</p>
     </li>
       
       {% endfor %}
    </ul>
+  
+   
 </body>
+<a href="{% url 'Ecommerce:home' %}" class="back-link">Back to home page</a>
 </html>

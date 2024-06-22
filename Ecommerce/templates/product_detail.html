@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{product.name}}</title>
+    <link rel="stylesheet" href="{% static 'Ecommerce/style.css' %}">
+</head>
+<body>
+    
+    <ul>
+        {% for product in product %}
+        
+        {% for item in seq %}
+        <li>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p> price: Kshs. {{ product.price }}</p>
+            <img src="{{product.image.url}}" alt="{{product.name}}">
+            <p>Available: {{product.available|yesno:"yes,No"}}</p>
+
+
+
+        </li>
+        {% endfor %}
+
+    </ul>
+    
+
+
+
+    
+</body>
+<a href="{% url 'Ecommerce:product_list' %}" class="back-link">Back to product List</a>
+
+</html>
